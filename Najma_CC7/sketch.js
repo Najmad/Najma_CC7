@@ -16,6 +16,7 @@ var cityInfo;
   var heavy;
   var sunny;
   var clearsky;
+  var partly;
 
 //coordinates for images
 var images = {
@@ -38,6 +39,9 @@ var images = {
     } else if(currentCondition == 'sunny'){
      image(sunny, this.x, this.y, 300, 300);
     }
+    else if(currentCondition == 'Partly Cloudy'){
+     image(partly, this.x, this.y, 300, 300);
+    }
   },
   
   //determines movement based on wind
@@ -56,17 +60,22 @@ function preload(){
   sunny = loadImage("images/sunny.png");
   rainSounds = loadSound("sounds/rainsounds.mp3");
   birdSounds = loadSound("sounds/birdsounds.mp3");
+  partly = loadImage("images/partly.png");
 }
 
 function setup() {
   loadJSON(url, gotData);
   createCanvas(500,500);
   //plays sounds based on weather conditions
-  if (currentCondition == 'Rain' || 'Heavy Rain' || 'Light Rain' ){
+  if (currentCondition == 'Rain'){
   rainSounds.play();
-  } else if (currentCondition == 'Sunny' || ' Clear'){
+  } else if (currentCondition == 'Light Rain'){
+  rainSounds.play();
+  } else if (currentCondition == 'Heavy Rain'){
+  rainSounds.play();
+  } else 
     birdSounds.play();
-  }
+  
   
 }
 
@@ -76,7 +85,7 @@ function gotData(data){
   currentTemp = weatherData.current_observation.temp_f;
   currentCondition = weatherData.current_observation.weather;
   // console.log(currentTemp)
-  // console.log(currentCondition)
+   console.log(currentCondition)
   wind = weatherData.current_observation.wind_mph;
   // console.log(wind)
   cityInfo = weatherData.current_observation.observation_location.city;
@@ -85,7 +94,7 @@ function gotData(data){
 }
 
 function draw() {
-  background(0);
+  background(135, 206, 250);
   fill(255);
   textSize(10);
   //display city, temp, and weather conditions
