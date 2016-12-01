@@ -42,6 +42,9 @@ var images = {
     else if(currentCondition == 'Partly Cloudy'){
      image(partly, this.x, this.y, 300, 300);
     }
+    else if(currentCondition == 'Mostly Cloudy'){
+     image(partly, this.x, this.y, 300, 300);
+    }
   },
   
   //determines movement based on wind
