@@ -43,11 +43,11 @@ var images = {
     } else if(currentCondition == 'sunny'){
      image(sunny, this.x, this.y, 300, 300);
     }
-    else if(currentCondition == 'Partly Cloudy'){
+    else if((h >= 7) && (h < 17) && (currentCondition == 'Partly Cloudy' || 'Mostly Cloudy' || 'Scattered Clouds')){
      image(partly, this.x, this.y, 300, 300);
     }
-    else if(currentCondition == 'Mostly Cloudy'){
-     image(partly, this.x, this.y, 300, 300);
+    else if((h < 7) && (h > 17) && (currentCondition == 'Partly Cloudy' || 'Mostly Cloudy' || 'Scattered Clouds')){
+     image(pvercast, this.x, this.y, 300, 300);
     }
   },
   
