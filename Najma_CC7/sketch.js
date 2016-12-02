@@ -69,6 +69,7 @@ function preload(){
   birdSounds = loadSound("sounds/birdsounds.mp3");
   partly = loadImage("images/partly.png");
   h = hour();
+  //console.log(h);
   crickets = loadSound("sounds/crickets.mp3");
 }
 
@@ -82,7 +83,7 @@ function setup() {
   rainSounds.play();
   } else if (currentCondition == 'Heavy Rain'){
   rainSounds.play();
-  } else if ((h > 7) && (h < 17) && (currentCondition == 'Cloudy' || 'Partly Cloudy' || 'Sunny' || 'Clear')){
+  } else if ((h >= 7) && (h < 17) && (currentCondition == 'Cloudy' || 'Partly Cloudy' || 'Sunny' || 'Clear')){
     birdSounds.play();
   } else  crickets.play();
   
@@ -94,7 +95,7 @@ function gotData(data){
   currentTemp = weatherData.current_observation.temp_f;
   currentCondition = weatherData.current_observation.weather;
   // console.log(currentTemp)
-   console.log(currentCondition)
+   //console.log(currentCondition)
   wind = weatherData.current_observation.wind_mph;
   // console.log(wind)
   cityInfo = weatherData.current_observation.observation_location.city;
