@@ -82,7 +82,7 @@ function setup() {
   rainSounds.play();
   } else if (currentCondition == 'Heavy Rain'){
   rainSounds.play();
-  } else if ((h < 17) && (currentCondition == 'Cloudy' || 'Partly Cloudy' || 'Sunny' || 'Clear')){
+  } else if ((h > 7) && (h < 17) && (currentCondition == 'Cloudy' || 'Partly Cloudy' || 'Sunny' || 'Clear')){
     birdSounds.play();
   } else  crickets.play();
   
@@ -103,7 +103,7 @@ function gotData(data){
 }
 
 function draw() {
-  if (h > 17){
+  if ((h > 17) || (h < 7)){
   background(0, 26, 51);  
   } else
   background(135, 206, 250);
