@@ -4,6 +4,7 @@ var h
 //variables for sounds
 var rainSounds;
 var birdSounds;
+var crickets;
 
 //variables storing weather data
 var weatherData;
@@ -68,6 +69,7 @@ function preload(){
   birdSounds = loadSound("sounds/birdsounds.mp3");
   partly = loadImage("images/partly.png");
   h = hour();
+  crickets = loadSound("sounds/crickets.mp3");
 }
 
 function setup() {
@@ -80,9 +82,9 @@ function setup() {
   rainSounds.play();
   } else if (currentCondition == 'Heavy Rain'){
   rainSounds.play();
-  } else 
+  } else if ((h < 17) && (currentCondition == 'Cloudy' || 'Partly Cloudy' || 'Sunny' || 'Clear')){
     birdSounds.play();
-  
+  } else  crickets.play();
   
 }
 
