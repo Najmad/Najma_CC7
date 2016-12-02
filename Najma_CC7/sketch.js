@@ -1,3 +1,6 @@
+//variables for time
+var h
+
 //variables for sounds
 var rainSounds;
 var birdSounds;
@@ -23,7 +26,7 @@ var images = {
   x: 100,
   y: 150,
   
-  display: function(){
+  displaying: function(){
     //displays image based on conditions
   if (currentCondition == 'Overcast'){
   image(overcast, this.x, this.y, 300, 300); 
@@ -64,6 +67,7 @@ function preload(){
   rainSounds = loadSound("sounds/rainsounds.mp3");
   birdSounds = loadSound("sounds/birdsounds.mp3");
   partly = loadImage("images/partly.png");
+  h = hour();
 }
 
 function setup() {
@@ -97,6 +101,9 @@ function gotData(data){
 }
 
 function draw() {
+  if (h > 17){
+  background(0, 26, 51);  
+  } else
   background(135, 206, 250);
   fill(255);
   textSize(10);
@@ -105,7 +112,7 @@ function draw() {
   text("Temperature: " + currentTemp, 20, 30);
   text("Conditions: " + currentCondition, 20, 40);
   text("Wind: " + wind + "mph", 20, 50);
-  images.display();
+  images.displaying();
   images.windy();
   
   
