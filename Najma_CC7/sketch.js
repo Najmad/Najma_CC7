@@ -8,7 +8,7 @@ var crickets;
 
 //variables storing weather data
 var weatherData;
-var url = 'http://api.wunderground.com/api/e97b5b645152e607/conditions/q/10001.json';
+var url = 'http://api.wunderground.com/api/e97b5b645152e607/conditions/q/11105.json';
 var currentTemp;
 var currentCondition;
 var wind;
