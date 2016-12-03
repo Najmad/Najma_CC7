@@ -46,8 +46,8 @@ var images = {
     else if((h >= 7) && (h < 17) && (currentCondition == 'Partly Cloudy' || 'Mostly Cloudy' || 'Scattered Clouds')){
      image(partly, this.x, this.y, 300, 300);
     }
-    else if((h < 7) && (h > 17) && (currentCondition == 'Partly Cloudy' || 'Mostly Cloudy' || 'Scattered Clouds')){
-     image(pvercast, this.x, this.y, 300, 300);
+    else if((h <= 7) || (h >= 17) && (currentCondition == 'Partly Cloudy' || 'Mostly Cloudy' || 'Scattered Clouds')){
+     image(overcast, this.x, this.y, 300, 300);
     }
   },
   
