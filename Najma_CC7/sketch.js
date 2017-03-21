@@ -8,7 +8,7 @@ var crickets;
 
 //variables storing weather data
 var weatherData;
-var url = 'http://api.wunderground.com/api/e97b5b645152e607/conditions/q/11105.json';
+var url = 'http://api.wunderground.com/api/e97b5b645152e607/conditions/q/10001.json';
 var currentTemp;
 var currentCondition;
 var wind;
@@ -21,15 +21,16 @@ var cityInfo;
   var sunny;
   var clearsky;
   var partly;
+  var snow;
 
 //coordinates for images
 var images = {
-  x: 100,
-  y: 150,
+  x: 50,
+  y: 50,
   
   displaying: function(){
     //displays image based on conditions
-  if (currentCondition == 'Overcast'){
+  if (currentCondition == 'Overcast' || 'Scattered Clouds'){
   image(overcast, this.x, this.y, 300, 300); 
   } else if(currentCondition == 'Rain') {
     image(rain, this.x, this.y, 300, 300);
@@ -43,12 +44,16 @@ var images = {
     } else if(currentCondition == 'sunny'){
      image(sunny, this.x, this.y, 300, 300);
     }
+    else if(currentCondition == 'Snow' || 'Light Snow' || 'Heavy Snow' || 'Snow Storms'){
+     image(snow, this.x, this.y, 300, 300);
+    }
     else if((h >= 7) && (h < 17) && (currentCondition == 'Partly Cloudy' || 'Mostly Cloudy' || 'Scattered Clouds')){
      image(partly, this.x, this.y, 300, 300);
     }
     else if((h <= 7) || (h >= 17) && (currentCondition == 'Partly Cloudy' || 'Mostly Cloudy' || 'Scattered Clouds')){
      image(overcast, this.x, this.y, 300, 300);
-    }
+    } 
+    
   },
   
   //determines movement based on wind
@@ -68,6 +73,7 @@ function preload(){
   rainSounds = loadSound("sounds/rainsounds.mp3");
   birdSounds = loadSound("sounds/birdsounds.mp3");
   partly = loadImage("images/partly.png");
+  snow = loadImage("images/snow.png");
   h = hour();
   //console.log(h);
   crickets = loadSound("sounds/crickets.mp3");
@@ -75,7 +81,7 @@ function preload(){
 
 function setup() {
   loadJSON(url, gotData);
-  createCanvas(500,500);
+  createCanvas(400,400);
   //plays sounds based on weather conditions
   if (currentCondition == 'Rain'){
   rainSounds.play();
@@ -104,7 +110,7 @@ function gotData(data){
 }
 
 function draw() {
-  if ((h > 17) || (h < 7)){
+  if ((h >= 17) || (h < 7)){
   background(0, 26, 51);  
   } else
   background(135, 206, 250);
@@ -120,4 +126,3 @@ function draw() {
   
   
 }
-
